@@ -1,0 +1,41 @@
+pipeline {
+    agent { docker {image 'python:3.5' }}
+    
+    environment {
+        PROJECT_NAME= 'MARS'
+        OWNER= 'VITOS'
+    }
+    
+    stages {
+        stage('1-Build') {
+            steps {
+                echo "We are starting build, ${OWNER}"
+                echo "name of our project is ${PROJECT_NAME}"
+                echo 'Start of STAGE build'
+                echo 'Building............'
+                echo 'End of STAGE build'
+            }
+        }
+        stage('2-Test') {
+            steps {
+                echo 'Start of STAGE test'
+                echo 'Testing............'
+                echo 'End of STAGE test'
+                sh "ls -lah"
+            }
+        }
+        stage('3-Deploy') {
+            steps {
+                echo 'Start of STAGE deploy'
+                echo 'Deploying............'
+                echo 'End of STAGE deploy'
+                sh 'python --version'
+            }
+        }
+        stage('4-celebrate') {
+            steps {
+                echo 'WOW'
+            }
+        }
+    }
+}
